@@ -10,24 +10,10 @@ BST::~BST() {
     delTree(this->root);
 }
 
-	//Please note that the class that implements this interface must be made
-	//of objects which implement the NodeInterface
-
-	/*
-	* Returns the root node for this tree
-	*
-	* @return the root node for this tree.
-	*/
 NodeInterface * BST::getRootNode() const {
     return this->root;
 }
 
-	/*
-	* Attempts to add the given int to the BST tree
-	*
-	* @return true if added
-	* @return false if unsuccessful (i.e. the int is already in tree)
-	*/
 bool BST::add(int data) {
     if (this->root == nullptr) {
         Node* newPtr = new Node(data);
@@ -87,12 +73,6 @@ bool BST::insert(Node*& localRoot, int data) {
     }
 }
 
-	/*
-	* Attempts to remove the given int from the BST tree
-	*
-	* @return true if successfully removed
-	* @return false if remove is unsuccessful(i.e. the int is not in the tree)
-	*/
 bool BST::remove(int data) {
     if (search(this->root, data) == false) {
         return false;
@@ -148,24 +128,12 @@ bool BST::delVal(Node*& localRoot, int data) {
                 } while (newRoot->right != nullptr);
                 localRoot->data = newRoot->data;
                 delVal(localRoot->left, localRoot->data);
-                /*Node* tmp = localRoot;
-                newRoot->right = localRoot->right;
-                Node* tmp2 = nullptr;
-                if (newRoot->left != nullptr) {
-                    tmp2 = newRoot->left;
-                }
-                newRoot->left = localRoot->left;
-                localRoot = newRoot;
-                newRoot = tmp2;
-                delete tmp;*/
                 return true;
             }
         }
     }
 }
-	/*
-	* Removes all nodes from the tree, resulting in an empty tree.
-	*/
+
 void BST::delTree(Node*& localRoot) {
     if (localRoot == nullptr) {
         return;
